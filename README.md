@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## TODO(jriall):
+- Add extensive README.
+- Add comments to all tests.
+- Add component, service, route guard, resolver, pipe, directive, regular (non-Angular) function tests.
+- Use Angular Material components.
+- Add test coverage.
+- Add pre-commit hook.
+- Document code coverage reporting and enforcement - https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/code-coverage.md
