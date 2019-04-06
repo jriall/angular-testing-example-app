@@ -91,7 +91,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
-            ],
+            ]
           }
         },
         "lint": {

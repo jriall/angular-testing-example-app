@@ -30,7 +30,24 @@ A typical development workflow would be to run `ng serve` in one terminal pane/w
 in another. Incremental recompiles are very quick allowing the developer to quickly see test suite
 status as well as the development build of the application while making changes.
 
+## Pre-push git hook
+
+The project uses [Husky](https://github.com/typicode/husky) to configure a pre-push git hook
+which runs all tests in the project. If any tests fail or if code coverage does not meet the minimum
+threshold, the pre-push hook will abort any `git push` command.
+
+You are able to force your changes through by passing the `--no-verify` flag to `git push`, however,
+it is strongly recommended not to do this, for the following reasons:
+
+- Code coverage should meet agreed upon minimum thresholds.
+- If tests are broken, this is a good indication that *the project* is broken as well. Either the
+  project should be fixed so that the tests do not break, or if the tests are broken, then they
+  should be fixed.
+- Skipping tests in this way might allow you to push now, but the test suite remains broken for
+  everyone, meaning that tests will now fail on every attempt to push, and will have to be skipped
+  by everyone for every push, or someone else will have to fix the tests in order to continue
+  working on the project.
+
 ## TODO(jriall):
 - Add testing resources links to README.
 - Add comments to all tests.
-- Add pre-commit hook.
