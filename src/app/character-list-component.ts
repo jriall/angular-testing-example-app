@@ -1,16 +1,16 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 
 import {StarWarsCharacter} from './data-service';
 
 @Component({
   selector: 'character-list',
-  template: `
-    <ng-container *ngFor="let character of characterList | async">
-      <p>{{ character.name }}</p>
-    </ng-container>
-  `,
+  templateUrl: './character-list-component.html',
 })
-export class CharacterListComponent {
-  @Input() characterList?: Observable<StarWarsCharacter[]>;
+export class CharacterListComponent implements OnInit {
+  @Input() characterList: StarWarsCharacter[] = [];
+
+  ngOnInit() {
+    console.log(this.characterList);
+  }
 }

@@ -5,7 +5,9 @@ import {DataService} from './data-service';
   selector: 'character-list-view',
   template: `
     <h1>Star Wars Character List</h1>
-    <character-list [characterList]="characterList"></character-list>
+    <ng-container *ngIf="characterList | async as characterList">
+      <character-list [characterList]="characterList"></character-list>
+    </ng-container>
   `,
 })
 export class CharacterListViewComponent {
