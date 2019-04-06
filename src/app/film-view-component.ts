@@ -9,7 +9,21 @@ import {DataService} from './data-service';
   template: `
     <button (click)="goBack()">Back</button>
     <ng-container *ngIf="filmDetail$ | async as filmDetail">
-      <h1>{{ filmDetail.title }}</h1>
+      <h1>Episode {{filmDetail_episode_id }} - {{ filmDetail.title }}</h1>
+      <ul>
+        <li>
+          <h2>Director</h2>
+          <p>{{ filmDetail.director }}</p>
+        </li>
+        <li>
+          <h2>Release date</h2>
+          <p>{{ filmDetail.release_date }}</p>
+        </li>
+        <li>
+          <h2>Plot introduction</h2>
+          <p>{{ filmDetail.opening_crawl }}</p>
+        </li>
+      </ul>
     </ng-container>
   `,
 })
