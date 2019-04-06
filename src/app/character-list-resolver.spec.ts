@@ -26,7 +26,7 @@ const MOCK_CHARACTER_LIST = [{
 
 describe('The character list resolver', () => {
   let characterListResolver: CharacterListResolver;
-  let characterListSpy: any;
+  let characterListSpy: jasmine.Spy;
 
   beforeEach(async(() => {
     TestBed
