@@ -8,6 +8,7 @@ import {AppComponent} from './app.component';
 import {CharacterListComponent} from './character-list-component';
 import {CharacterListViewComponent} from './character-list-view-component';
 import {FilmViewComponent} from './film-view-component';
+import {ReleaseDatePipe} from './release-date-pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {FilmViewComponent} from './film-view-component';
     CharacterListComponent,
     CharacterListViewComponent,
     FilmViewComponent,
+    ReleaseDatePipe,
   ],
   imports: [
     AppRoutingModule,

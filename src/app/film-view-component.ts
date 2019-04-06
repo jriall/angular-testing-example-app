@@ -17,7 +17,7 @@ import {DataService} from './data-service';
         </li>
         <li>
           <h2>Release date</h2>
-          <p>{{ filmDetail.release_date }}</p>
+          <p>{{ filmDetail.release_date | releaseDate:'long' }}</p>
         </li>
         <li>
           <h2>Plot introduction</h2>
