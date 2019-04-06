@@ -7,7 +7,7 @@ import {DataService} from './data-service';
 @Component({
   selector: 'film-view',
   template: `
-    <button (click)="goBack()">Back</button>
+    <button mat-raised-button color="primary" (click)="goBack()">Back</button>
     <ng-container *ngIf="filmDetail$ | async as filmDetail">
       <h1>Episode {{filmDetail_episode_id }} - {{ filmDetail.title }}</h1>
       <ul>

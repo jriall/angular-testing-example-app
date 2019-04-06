@@ -1,33 +1,39 @@
 <ng-container *ngFor="let character of characterList">
-  <h2>{{ character.name }}</h2>
-  <ul>
-    <li>
-      <h3>Birth Year</h3>
-      <p>{{ character.birth_year }}</p>
-    </li>
-    <li>
-      <h3>Gender</h3>
-      <p>{{ character.gender }}</p>
-    </li>
-    <li>
-      <h3>Hair Color</h3>
-      <p>{{ character.hair_color }}</p>
-    </li>
-    <li>
-      <h3>Mass</h3>
-      <p>{{ character.mass }}</p>
-    </li>
-    <li>
-      <h3>Height</h3>
-      <p>{{ character.height }}</p>
-    </li>
-    <li>
-      <h3>Films</h3>
+  <mat-card>
+    <mat-card-title>
+      <h2>{{ character.name }}</h2>
+    </mat-card-title>
+    <mat-card-content>
       <ul>
-        <li *ngFor="let film of character.films">
-          <a [routerLink]="['film', getFilmEpisodeId(film)]">{{ getFilmName(film) }}</a>
+        <li>
+          <h3>Birth Year</h3>
+          <p>{{ character.birth_year }}</p>
+        </li>
+        <li>
+          <h3>Gender</h3>
+          <p>{{ character.gender }}</p>
+        </li>
+        <li>
+          <h3>Hair Color</h3>
+          <p>{{ character.hair_color }}</p>
+        </li>
+        <li>
+          <h3>Mass</h3>
+          <p>{{ character.mass }}</p>
+        </li>
+        <li>
+          <h3>Height</h3>
+          <p>{{ character.height }}</p>
+        </li>
+        <li>
+          <h3>Films</h3>
+          <ul>
+            <li *ngFor="let film of character.films">
+              <a [routerLink]="['film', getFilmEpisodeId(film)]">{{ getFilmName(film) }}</a>
+            </li>
+          </ul>
         </li>
       </ul>
-    </li>
-  </ul>
+    </mat-card-content>
+  </mat-card>
 </ng-container>
