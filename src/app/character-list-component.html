@@ -21,5 +21,13 @@
       <h3>Height</h3>
       <p>{{ character.height }}</p>
     </li>
+    <li>
+      <h3>Films</h3>
+      <ul>
+        <li *ngFor="let film of character.films">
+          {{ getFilmName(film) }}
+        </li>
+      </ul>
+    </li>
   </ul>
 </ng-container>
