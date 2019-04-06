@@ -1,7 +1,7 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {map} from 'rxjs/operators';
 
-enum MonthFormat {
+export enum MonthFormat {
   LONG = 'long',
   SHORT = 'short',
 }
@@ -38,7 +38,7 @@ const shortMonthMap = {
 
 @Pipe({name: 'releaseDate'})
 export class ReleaseDatePipe implements PipeTransform {
-  transform(releaseDate: string, monthFormat: MonthFormat) {
+  transform(releaseDate: string, monthFormat = MonthFormat.LONG) {
     const [year, month, date] =
         releaseDate.split('-').map(number => Math.abs(+number).toString());
 
