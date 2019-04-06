@@ -9,6 +9,13 @@ import {DataService} from './data-service';
       <character-list [characterList]="characterList"></character-list>
     </ng-container>
   `,
+  styles: [`
+    h1 {
+      font: 400 40px / 50px 'Google Sans';
+      margin-bottom: 52px;
+      text-align: center;
+    }
+  `],
 })
 export class CharacterListViewComponent {
   private readonly characterList = this.dataService.getCharacterList();

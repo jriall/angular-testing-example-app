@@ -1,0 +1,56 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+mat-card {
+  width: 28%;
+  margin: 16px;
+}
+
+.header-logo {
+  background-image: url('/assets/images/star-wars-logo.png');
+  background-size: cover;
+}
+
+.character-image {
+  height: 400px;
+  object-fit: cover;
+}
+
+ul {
+  &.main-list {
+    padding: 0;
+
+    li {
+      list-style: none;
+      display: flex;
+      align-items: center;
+
+      &.films {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      h3,
+      p {
+        margin: 0 0 16px;
+      }
+
+      h3 {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  &.film-list {
+    display: flex;
+    padding: 0;
+    flex-wrap: wrap;
+
+    li {
+      margin: 0 5px 5px 0;
+    }
+  }
+}

@@ -1,39 +1,47 @@
-<ng-container *ngFor="let character of characterList">
-  <mat-card>
-    <mat-card-title>
-      <h2>{{ character.name }}</h2>
-    </mat-card-title>
-    <mat-card-content>
-      <ul>
-        <li>
-          <h3>Birth Year</h3>
-          <p>{{ character.birth_year }}</p>
-        </li>
-        <li>
-          <h3>Gender</h3>
-          <p>{{ character.gender }}</p>
-        </li>
-        <li>
-          <h3>Hair Color</h3>
-          <p>{{ character.hair_color }}</p>
-        </li>
-        <li>
-          <h3>Mass</h3>
-          <p>{{ character.mass }}</p>
-        </li>
-        <li>
-          <h3>Height</h3>
-          <p>{{ character.height }}</p>
-        </li>
-        <li>
-          <h3>Films</h3>
-          <ul>
-            <li *ngFor="let film of character.films">
-              <a [routerLink]="['film', getFilmEpisodeId(film)]">{{ getFilmName(film) }}</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </mat-card-content>
-  </mat-card>
-</ng-container>
+<mat-card *ngFor="let character of characterList">
+  <mat-card-header>
+    <div mat-card-avatar class="header-logo"></div>
+    <mat-card-title>{{ character.name }}</mat-card-title>
+    <mat-card-subtitle>{{ getCharacterDescription(character.name) }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image
+       src="/assets/images/{{getImageSlug(character.name)}}.png"
+       alt="Image of {{ character.name }}"
+       class="character-image">
+  <mat-card-content>
+    <ul class="main-list">
+      <li>
+        <h3>Birth Year:</h3>
+        <p>{{ character.birth_year }}</p>
+      </li>
+      <li>
+        <h3>Gender:</h3>
+        <p>{{ character.gender }}</p>
+      </li>
+      <li>
+        <h3>Hair Color:</h3>
+        <p>{{ character.hair_color }}</p>
+      </li>
+      <li>
+        <h3>Mass:</h3>
+        <p>{{ character.mass }}</p>
+      </li>
+      <li>
+        <h3>Height:</h3>
+        <p>{{ character.height }}</p>
+      </li>
+      <li class="films">
+        <h3>Films</h3>
+        <ul class="film-list">
+          <li *ngFor="let film of character.films">
+            <a mat-stroked-button
+               color="primary"
+               [routerLink]="['film', getFilmEpisodeId(film)]">
+              {{ getFilmName(film) }}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </mat-card-content>
+</mat-card>
