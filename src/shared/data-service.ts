@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {first, map, shareReplay} from 'rxjs/operators';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map, shareReplay, switchMap} from 'rxjs/operators';
 
 import {STAR_WARS_API_ROOT} from './constants';
 
@@ -55,23 +55,29 @@ export declare interface StarWarsCharacter {
   vehicles: string[];
 }
 
-
 @Injectable({providedIn: 'root'})
 export class DataService {
-  private readonly characterList =
-      this.httpClient
-          .get<StarWarsCharacterListResponse>(`${STAR_WARS_API_ROOT}people/`)
-          .pipe(first(), shareReplay(1));
-
+  private readonly characterListRefreshToken = new BehaviorSubject<null>(null);
+  private readonly characterList = this.characterListRefreshToken.pipe(
+      switchMap(() => this.fetchCharacterList()), shareReplay(1));
   private readonly filmList =
       this.httpClient
           .get<StarWarsFilmListResponse>(`${STAR_WARS_API_ROOT}films/`)
-          .pipe(first(), shareReplay(1));
+          .pipe(shareReplay(1));
 
   constructor(private readonly httpClient: HttpClient) {}
 
   getCharacterList(): Observable<StarWarsCharacter[]> {
     return this.characterList.pipe(map(response => response.results));
+  }
+
+  private fetchCharacterList(): Observable<StarWarsCharacterListResponse> {
+    return this.httpClient.get<StarWarsCharacterListResponse>(
+        `${STAR_WARS_API_ROOT}people/`);
+  }
+
+  refetchCharacterList() {
+    this.characterListRefreshToken.next(null);
   }
 
   getFilmList(): Observable<StarWarsFilm[]> {

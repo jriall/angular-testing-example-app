@@ -51,4 +51,12 @@ describe('The character list resolver', () => {
       expect(response).toEqual(MOCK_CHARACTER_LIST);
     });
   });
+
+  it('forces a refresh of the characterList', () => {
+    const characterListRefreshSpy =
+        spyOn(TestBed.get(DataService), 'refetchCharacterList');
+    characterListResolver.resolve();
+
+    expect(characterListRefreshSpy).toHaveBeenCalled();
+  });
 });

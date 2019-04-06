@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Resolve} from '@angular/router';
 import {Observable} from 'rxjs';
+import {first} from 'rxjs/operators';
 
 import {DataService, StarWarsFilm} from './data-service';
 
@@ -10,6 +11,6 @@ export class FilmListResolver implements
   constructor(private readonly dataService: DataService) {}
 
   resolve(): Observable<StarWarsFilm[]> {
-    return this.dataService.getFilmList();
+    return this.dataService.getFilmList().pipe(first());
   }
 }
