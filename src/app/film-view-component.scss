@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+button {
+  margin: 24px 0;
+}
+
+h1 {
+  font: 400 40px / 50px 'Google Sans';
+  margin-bottom: 52px;
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+}
+
+ul {
+  padding: 0;
+  width: 50%;
+
+  li {
+    list-style: none;
+
+    h2 {
+      font: 400 20px / 28px 'Roboto';
+    }
+
+    p {
+      font: 400 16px / 24px 'Roboto';
+    }
+  }
+}
+
+.film-poster-container {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+
+  img {
+    max-width: 100%;
+    max-height: 500px;
+  }
+}

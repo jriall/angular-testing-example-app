@@ -6,26 +6,8 @@ import {DataService} from './data-service';
 
 @Component({
   selector: 'film-view',
-  template: `
-    <button mat-raised-button color="primary" (click)="goBack()">Back</button>
-    <ng-container *ngIf="filmDetail$ | async as filmDetail">
-      <h1>Episode {{filmDetail_episode_id }} - {{ filmDetail.title }}</h1>
-      <ul>
-        <li>
-          <h2>Director</h2>
-          <p>{{ filmDetail.director }}</p>
-        </li>
-        <li>
-          <h2>Release date</h2>
-          <p>{{ filmDetail.release_date | releaseDate:'long' }}</p>
-        </li>
-        <li>
-          <h2>Plot introduction</h2>
-          <p>{{ filmDetail.opening_crawl }}</p>
-        </li>
-      </ul>
-    </ng-container>
-  `,
+  templateUrl: './film-view-component.html',
+  styleUrls: ['./film-view-component.scss'],
 })
 export class FilmViewComponent {
   readonly filmDetail$ = this.dataService.getFilmList().pipe(map(filmList => {
@@ -40,6 +22,10 @@ export class FilmViewComponent {
       private readonly route: ActivatedRoute,
       private readonly dataService: DataService,
       private readonly router: Router) {}
+
+  hadMultipleProducers(producers: string): boolean {
+    return producers.split(', ').length > 1;
+  }
 
   goBack() {
     this.router.navigate(['/']);

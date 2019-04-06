@@ -1,0 +1,27 @@
+<button mat-raised-button color="primary" (click)="goBack()">Back</button>
+<mat-card *ngIf="filmDetail$ | async as filmDetail">
+  <h1>Episode {{filmDetail.episode_id }} - {{ filmDetail.title }}</h1>
+  <div class="grid">
+    <ul>
+      <li>
+        <h2>Director</h2>
+        <p>{{ filmDetail.director }}</p>
+      </li>
+      <li>
+        <h2>Producer{{ hadMultipleProducers(filmDetail.producer) ? 's' : '' }}</h2>
+        <p>{{ filmDetail.producer }}</p>
+      </li>
+      <li>
+        <h2>Release date</h2>
+        <p>{{ filmDetail.release_date | releaseDate:'long' }}</p>
+      </li>
+      <li>
+        <h2>Plot introduction</h2>
+        <p>{{ filmDetail.opening_crawl }}</p>
+      </li>
+    </ul>
+    <div class="film-poster-container">
+      <img src="/assets/images/episode-{{ filmDetail.episode_id }}.jpg" alt="Film poster">
+    </div>
+  </div>
+</mat-card>
