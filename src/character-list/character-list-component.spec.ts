@@ -9,6 +9,11 @@ import {DataService} from '../shared/data-service';
 
 import {CharacterListComponent, getCharacterDescription} from './character-list-component';
 
+/**
+ * Setting up our mock data. Sometimes it's easier to just mock data out by
+ * hand, but often you can save yourself time by creating functions/classes
+ * which produce mock data for you in a less manual way.
+ */
 const MOCK_CHARACTER_LIST = [
   {
     birth_year: 'test string',
@@ -101,11 +106,19 @@ const MOCK_FILM_LIST = [
   }
 ];
 
+/**
+ * We create a fake component here in order to provide to our mock router
+ * below. Each path needs a corresponding component, and we prefer fake
+ * components to real ones to reduce complexity.
+ */
 @Component({template: ''})
 class FakeComponent {
 }
 
 describe('The character list component', () => {
+  /**
+   * Setup a very simple spy on the router's navigate method.
+   */
   const router = {navigate: jasmine.createSpy('navigate')};
 
   beforeEach(async(() => {
@@ -117,6 +130,8 @@ describe('The character list component', () => {
           ],
           imports: [
             MatCardModule,
+            // Set up a mock router instead of using the real one. This allows
+            // for easier testing.
             RouterTestingModule.withRoutes([
               {
                 path: '',
@@ -128,6 +143,10 @@ describe('The character list component', () => {
               }
             ]),
           ],
+          // Below we are mocking our providers to return mock data rather than
+          // making http requests. Mocking like this allows us to provide test
+          // data, and mock any other dependencies such as services, routers,
+          // route data, etc.
           providers: [
             {
               provide: DataService,
@@ -151,6 +170,10 @@ describe('The character list component', () => {
     expect(component).toBeTruthy();
   });
 
+  /**
+   * We can make sure that our crucial DOM elements are rendering correctly and
+   * in the correct numbers.
+   */
   it('renders a card for each character in the characterList', () => {
     const fixture = TestBed.createComponent(CharacterListComponent);
     const component = fixture.componentInstance;
@@ -162,6 +185,9 @@ describe('The character list component', () => {
         .toBe(MOCK_CHARACTER_LIST.length);
   });
 
+  /**
+   * Test that our component generates the data structures it needs correctly.
+   */
   it('constructs the filmNameList correctly', () => {
     const fixture = TestBed.createComponent(CharacterListComponent);
     const component = fixture.componentInstance;
@@ -183,6 +209,13 @@ describe('The character list component', () => {
     expect(component.filmNameList).toEqual(expectedResult);
   })
 
+  /**
+   * This is testing text in the DOM which is computed from component methods.
+   * It's often better to test the DOM output rather than testing the component
+   * method directly. By testing the DOM output we're testing the method
+   * indirectly, as well as testing that the actual output is rendered in the UI
+   * correctly.
+   */
   it('displays character names correctly', () => {
     const fixture = TestBed.createComponent(CharacterListComponent);
     const component = fixture.componentInstance;
@@ -197,6 +230,7 @@ describe('The character list component', () => {
     expect(subtitleList[2].innerText).toBe('Annoying tin can');
   });
 
+  /** An example of how to test a component method's output directly. */
   it('formats character image slugs correctly', () => {
     const fixture = TestBed.createComponent(CharacterListComponent);
     const component = fixture.componentInstance;
@@ -213,6 +247,9 @@ describe('The character list component', () => {
     const compiled = fixture.debugElement.nativeElement;
     fixture.detectChanges();
 
+    // Sometimes you're going to have to get a bit creative with selectors. This
+    // is better than adding classes to your elements solely for the purpose of
+    // testing.
     const firstCharacterFilmList =
         compiled.querySelectorAll('mat-card:first-of-type .films a');
 
@@ -232,6 +269,8 @@ describe('The character list component', () => {
        const firstCharacterFilmList =
            compiled.querySelectorAll('mat-card:first-of-type .films a');
 
+       // We can test that methods are called with the expected arguments as
+       // well as that they are called a certain number of times.
        firstCharacterFilmList[0].click();
        expect(router.navigate).toHaveBeenCalledWith(['film', 4]);
 
@@ -242,6 +281,11 @@ describe('The character list component', () => {
      })
 });
 
+/**
+ * It's also worthwhile testing standalone functions by themselves, as we do
+ * here. Try to test all branches and pass edge cases into your tests to improve
+ * coverage and make them more robust.
+ */
 describe('The getCharacterDescription function', () => {
   it('returns the correct description for Darth Vader', () => {
     expect(getCharacterDescription('Darth Vader')).toBe('Total doucher');

@@ -10,6 +10,10 @@ import {DataService} from '../shared/data-service';
 
 import {FilmViewComponent} from './film-view-component';
 
+/**
+ * See the comments in the character list component test - many of the comments
+ * there will also apply to this test.
+ */
 const MOCK_FILM_LIST = [
   {
     characters: ['test string', 'test string'],
@@ -75,6 +79,10 @@ describe('The character list view component', () => {
                 getFilmList: () => observableOf(MOCK_FILM_LIST),
               },
             },
+            // Mocking providers like Activated routes can be invaluable for
+            // testing logic which requires route data etc. Mocking the required
+            // values can often be tricky - the Angular API documentation is
+            // your friend.
             {
               provide: ActivatedRoute,
               useValue: {
@@ -110,6 +118,11 @@ describe('The character list view component', () => {
         .toBe('Episode 4 - A New Hope');
   });
 
+  /**
+   * The below two tests are indirectly testing that the hadMultipleProducers
+   * is returning the correct values, and that we are using the return value
+   * correctly to detemine whether to pluralise 'producer'.
+   */
   it('should render the producer section title in the singular if there is ' +
          'only one producer',
      () => {

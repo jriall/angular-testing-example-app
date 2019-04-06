@@ -29,6 +29,11 @@ const MOCK_FILM_LIST = [{
 class FakeComponent {
 }
 
+/**
+ * This guard test covers all possible branches and behaviors that the guard
+ * can produce - its return values for all cases, as well as testing whether it
+ * does or does not redirect the user.
+ */
 describe('The film guard', () => {
   let filmGuard: FilmGuard;
   let filmListSpy: jasmine.Spy;
@@ -46,9 +51,7 @@ describe('The film guard', () => {
             }]),
           ],
           providers: [
-            DataService,
-            FilmGuard,
-            {
+            DataService, FilmGuard, {
               provide: Router,
               useValue: router,
             }
@@ -64,6 +67,8 @@ describe('The film guard', () => {
   it('calls the getFilmList method on the data service when canActivate is' +
          ' called',
      () => {
+       // We can mock a lot of our inputs by instantiating classes build into
+       // Angular.
        const route = new ActivatedRouteSnapshot();
        route.params = {id: '2'};
 
@@ -85,11 +90,11 @@ describe('The film guard', () => {
   it('does not redirect the user to the homepage when the route params id is ' +
          'a valid episode id in the film list',
      () => {
-      const route = new ActivatedRouteSnapshot();
-      route.params = {id: '1'};
+       const route = new ActivatedRouteSnapshot();
+       route.params = {id: '1'};
 
-      filmGuard.canActivate(route);
-      expect(router.navigate).not.toHaveBeenCalled();
+       filmGuard.canActivate(route);
+       expect(router.navigate).not.toHaveBeenCalled();
      });
 
   it('returns false when the route params id is not a valid episode id in the' +
@@ -106,10 +111,10 @@ describe('The film guard', () => {
   it('redirects the user to the homepage when the route params id is not ' +
          'a valid episode id in the film list',
      () => {
-      const route = new ActivatedRouteSnapshot();
-      route.params = {id: '1'};
+       const route = new ActivatedRouteSnapshot();
+       route.params = {id: '1'};
 
-      filmGuard.canActivate(route);
-      expect(router.navigate).toHaveBeenCalledWith(['']);
+       filmGuard.canActivate(route);
+       expect(router.navigate).toHaveBeenCalledWith(['']);
      });
 });

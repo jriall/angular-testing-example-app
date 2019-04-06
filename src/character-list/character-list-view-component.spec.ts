@@ -3,10 +3,17 @@ import {MatCardModule} from '@angular/material/card';
 import {RouterTestingModule} from '@angular/router/testing';
 import {of as observableOf} from 'rxjs';
 
-import {CharacterListComponent} from './character-list-component';
-import {CharacterListViewComponent} from './character-list-view-component';
 import {DataService} from '../shared/data-service';
 
+import {CharacterListComponent} from './character-list-component';
+import {CharacterListViewComponent} from './character-list-view-component';
+
+/**
+ * Component tests for view components can often be fairly straightforward -
+ * this is basically just making sure that the component renders the child
+ * components correctly when the require data is passed in from the data
+ * service.
+ */
 describe('The character list view component', () => {
   beforeEach(async(() => {
     TestBed

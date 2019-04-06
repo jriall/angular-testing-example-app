@@ -36,6 +36,10 @@ describe('The character list resolver', () => {
         })
         .compileComponents();
 
+    // An example of using a spy to return mock data from a service this class
+    // depends on, rather than making the call to the service's real method
+    // (which would fire an http request - something we don't want to do in
+    // tests).
     characterListSpy = spyOn(TestBed.get(DataService), 'getCharacterList')
                            .and.returnValue(observableOf(MOCK_CHARACTER_LIST));
     characterListResolver = TestBed.get(CharacterListResolver);
@@ -43,10 +47,15 @@ describe('The character list resolver', () => {
 
   it('calls the getCharacterList method on the data service', () => {
     characterListResolver.resolve();
+
+    // We can check that methods we've previously spied on have been called at
+    // the correct times.
     expect(characterListSpy).toHaveBeenCalled();
   });
 
   it('returns an observable of the characterList', () => {
+    // We can test the return values of observables by subscribing to them and
+    // placing our expect block inside of the observer.
     characterListResolver.resolve().subscribe(response => {
       expect(response).toEqual(MOCK_CHARACTER_LIST);
     });

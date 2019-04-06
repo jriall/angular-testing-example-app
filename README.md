@@ -48,6 +48,6 @@ it is strongly recommended not to do this, for the following reasons:
   by everyone for every push, or someone else will have to fix the tests in order to continue
   working on the project.
 
+
 ## TODO(jriall):
 - Add testing resources links to README.
-- Add comments to all tests.

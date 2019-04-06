@@ -19,7 +19,7 @@ const longMonthMap = {
   10: 'October',
   11: 'November',
   12: 'December',
-}
+};
 
 const shortMonthMap = {
   1: 'Jan',
@@ -34,7 +34,7 @@ const shortMonthMap = {
   10: 'Oct',
   11: 'Nov',
   12: 'Dec',
-}
+};
 
 @Pipe({name: 'releaseDate'})
 export class ReleaseDatePipe implements PipeTransform {

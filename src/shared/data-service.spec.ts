@@ -32,6 +32,14 @@ const MOCK_CHARACTER_LIST_RESPONSE = {
 
 const CHARACTER_LIST_ENDPOINT = `${STAR_WARS_API_ROOT}people/`;
 
+/**
+ * Testing http request is actually quite straightforward once you familiarise
+ * yourself with the basic principles of the http testing controller. Rather
+ * than go into extensive detail on the below tests, the below link does a great
+ * job of explaining the basics:
+ *
+ * https://medium.com/@Jestfer/testing-http-requests-in-angular-with-httpclienttestingmodule-3880ceac74cf
+ */
 describe('The data service', () => {
   let dataService: DataService;
   let httpMock: HttpTestingController;

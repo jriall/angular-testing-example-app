@@ -7,6 +7,7 @@ import {FilmListResolver} from './film-list-resolver';
 
 const MOCK_FILM_LIST = [];
 
+/** See the character list resolver for similar comments on these tests. */
 describe('The film list resolver', () => {
   let filmListResolver: FilmListResolver;
   let filmListSpy: jasmine.Spy;
