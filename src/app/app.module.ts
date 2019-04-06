@@ -5,10 +5,10 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {CharacterListComponent} from './character-list-component';
-import {CharacterListViewComponent} from './character-list-view-component';
-import {FilmViewComponent} from './film-view-component';
-import {ReleaseDatePipe} from './release-date-pipe';
+import {CharacterListComponent} from '../character-list/character-list-component';
+import {CharacterListViewComponent} from '../character-list/character-list-view-component';
+import {FilmViewComponent} from '../film-view/film-view-component';
+import {ReleaseDatePipe} from '../shared/release-date-pipe';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 

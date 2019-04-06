@@ -5,7 +5,7 @@ import {of as observableOf} from 'rxjs';
 
 import {CharacterListComponent} from './character-list-component';
 import {CharacterListViewComponent} from './character-list-view-component';
-import {DataService} from './data-service';
+import {DataService} from '../shared/data-service';
 
 describe('The character list view component', () => {
   beforeEach(async(() => {

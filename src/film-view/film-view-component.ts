@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 
-import {DataService} from './data-service';
+import {DataService} from '../shared/data-service';
 
 @Component({
   selector: 'film-view',

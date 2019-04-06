@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {CharacterListResolver} from './character-list-resolver';
-import {CharacterListViewComponent} from './character-list-view-component';
-import {FilmListResolver} from './film-list-resolver';
-import { FilmViewComponent } from './film-view-component';
-import { FilmGuard } from './film-guard';
+import {CharacterListResolver} from '../shared/character-list-resolver';
+import {CharacterListViewComponent} from '../character-list/character-list-view-component';
+import {FilmListResolver} from '../shared/film-list-resolver';
+import { FilmViewComponent } from '../film-view/film-view-component';
+import { FilmGuard } from '../shared/film-guard';
 
 const routes: Routes = [{
   path: '',

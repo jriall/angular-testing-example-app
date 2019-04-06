@@ -2,7 +2,7 @@ import {Component, Input, OnDestroy} from '@angular/core';
 import {Observable, ReplaySubject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
-import {DataService, StarWarsCharacter} from './data-service';
+import {DataService, StarWarsCharacter} from '../shared/data-service';
 
 declare interface FilmNameMapping {
   episode_id: number;
