@@ -1,4 +1,5 @@
 import {Component, Input, OnDestroy} from '@angular/core';
+import {Router} from '@angular/router';
 import {Observable, ReplaySubject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -10,8 +11,8 @@ declare interface FilmNameMapping {
   name: string;
 }
 
-const getCharacterDescription = (name: string): string => {
-  switch(name) {
+export const getCharacterDescription = (name: string): string => {
+  switch (name) {
     case 'Darth Vader':
       return 'Total doucher';
     case 'C-3PO':
@@ -36,7 +37,9 @@ export class CharacterListComponent implements OnDestroy {
 
   @Input() characterList: StarWarsCharacter[] = [];
 
-  constructor(private readonly dataService: DataService) {
+  constructor(
+      private readonly dataService: DataService,
+      private readonly router: Router) {
     this.filmList$.pipe(takeUntil(this.destroy)).subscribe(results => {
       this.filmNameList = results.map(film => {
         return {
@@ -58,18 +61,18 @@ export class CharacterListComponent implements OnDestroy {
     }
   }
 
-  getFilmEpisodeId(url: string): number {
+  goToFilmPage(url: string) {
     const film = this.filmNameList.find(film => film.url === url);
 
     if (film) {
-      return film.episode_id;
-    } else {
-      return 1;
+      this.router.navigate(['film', film.episode_id]);
     }
   }
 
   getImageSlug(name: string): string {
-    return name.replace(/\s/g, '-').toLowerCase();
+    const formattedName = name.replace(/\s/g, '-').toLowerCase();
+
+    return `/assets/images/${formattedName}.png`;
   }
 
   ngOnDestroy() {

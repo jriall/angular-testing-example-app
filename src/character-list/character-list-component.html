@@ -5,7 +5,7 @@
     <mat-card-subtitle>{{ getCharacterDescription(character.name) }}</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image
-       src="/assets/images/{{getImageSlug(character.name)}}.png"
+       [src]="getImageSlug(character.name)"
        alt="Image of {{ character.name }}"
        class="character-image">
   <mat-card-content>
@@ -36,7 +36,7 @@
           <li *ngFor="let film of character.films">
             <a mat-stroked-button
                color="primary"
-               [routerLink]="['film', getFilmEpisodeId(film)]">
+               (click)="goToFilmPage(film)">
               {{ getFilmName(film) }}
             </a>
           </li>
