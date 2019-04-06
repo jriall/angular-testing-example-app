@@ -29,7 +29,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## TODO(jriall):
 - Add extensive README.
 - Add comments to all tests.
-- Add component, service, route guard, resolver, pipe, directive, regular (non-Angular) function tests.
+- Add directive, regular (non-Angular) function tests.
 - Use Angular Material components.
 - Add test coverage.
 - Add pre-commit hook.
