@@ -6,10 +6,10 @@ import {DataService, StarWarsCharacter} from './data-service';
 
 @Injectable({providedIn: 'root'})
 export class CharacterListResolver implements
-    Resolve<Observable<StarWarsCharacter>> {
+    Resolve<Observable<StarWarsCharacter[]>> {
   constructor(private readonly dataService: DataService) {}
 
-  resolve(): Observable<StarWarsCharacter> {
+  resolve(): Observable<StarWarsCharacter[]> {
     return this.dataService.getCharacterList();
   }
 }
