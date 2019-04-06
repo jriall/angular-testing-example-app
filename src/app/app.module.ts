@@ -7,12 +7,14 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CharacterListComponent} from './character-list-component';
 import {CharacterListViewComponent} from './character-list-view-component';
+import {FilmViewComponent} from './film-view-component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharacterListComponent,
     CharacterListViewComponent,
+    FilmViewComponent,
   ],
   imports: [
     AppRoutingModule,

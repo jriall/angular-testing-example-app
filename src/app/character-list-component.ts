@@ -5,6 +5,7 @@ import {takeUntil} from 'rxjs/operators';
 import {DataService, StarWarsCharacter} from './data-service';
 
 declare interface FilmNameMapping {
+  episode_id: number;
   url: string;
   name: string;
 }
@@ -24,6 +25,7 @@ export class CharacterListComponent implements OnDestroy {
     this.filmList$.pipe(takeUntil(this.destroy)).subscribe(results => {
       this.filmNameList = results.map(film => {
         return {
+          episode_id: film.episode_id,
           name: film.title,
           url: film.url,
         };
@@ -38,6 +40,16 @@ export class CharacterListComponent implements OnDestroy {
       return film.name;
     } else {
       return '';
+    }
+  }
+
+  getFilmEpisodeId(url: string): number {
+    const film = this.filmNameList.find(film => film.url === url);
+
+    if (film) {
+      return film.episode_id;
+    } else {
+      return 1;
     }
   }
 

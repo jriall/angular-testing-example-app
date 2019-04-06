@@ -25,7 +25,7 @@
       <h3>Films</h3>
       <ul>
         <li *ngFor="let film of character.films">
-          {{ getFilmName(film) }}
+          <a [routerLink]="['film', getFilmEpisodeId(film)]">{{ getFilmName(film) }}</a>
         </li>
       </ul>
     </li>
