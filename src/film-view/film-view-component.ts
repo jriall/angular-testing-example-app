@@ -19,7 +19,7 @@ export class FilmViewComponent {
   }));
 
   constructor(
-      private readonly route: ActivatedRoute,
+      public readonly route: ActivatedRoute,
       private readonly dataService: DataService,
       private readonly router: Router) {}
 
