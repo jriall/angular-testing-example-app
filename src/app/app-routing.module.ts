@@ -5,6 +5,7 @@ import {CharacterListResolver} from './character-list-resolver';
 import {CharacterListViewComponent} from './character-list-view-component';
 import {FilmListResolver} from './film-list-resolver';
 import { FilmViewComponent } from './film-view-component';
+import { FilmGuard } from './film-guard';
 
 const routes: Routes = [{
   path: '',
@@ -20,6 +21,7 @@ const routes: Routes = [{
   resolve: {
     filmList: FilmListResolver,
   },
+  canActivate: [FilmGuard],
 }];
 
 @NgModule({
